@@ -1,0 +1,55 @@
+name: Checkpoint 02 verification
+on:
+  push:
+    branches: [checkpoint-02-quality-gost]
+    paths: ['.github/workflows/checkpoint02-verify.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF parser
+        run: python -m pip install pypdf==5.9.0
+      - name: Check source PDFs
+        run: |
+          mkdir -p verification/raw verification/wheels
+          python - <<'PY'
+          import hashlib, json, pathlib, urllib.request
+          from pypdf import PdfReader
+          root = pathlib.Path('verification')
+          sources = {
+            'gost_9000_2015': 'https://files.stroyinf.ru/Data2/1/4293759/4293759339.pdf',
+            'gost_9001_2015': 'https://files.stroyinf.ru/Data2/1/4293759/4293759338.pdf',
+            'gost_10013_2024': 'https://files.stroyinf.ru/Data/830/83016.pdf',
+          }
+          metadata, pages = [], []
+          for doc_id, url in sources.items():
+              request = urllib.request.Request(url, headers={'User-Agent': 'ResearchAssistant/0.2 (educational corpus audit)'})
+              with urllib.request.urlopen(request, timeout=90) as response:
+                  data = response.read()
+              if not data.startswith(b'%PDF-'):
+                  raise ValueError(f'Not a PDF: {doc_id}')
+              path = root / 'raw' / f'{doc_id}.pdf'
+              path.write_bytes(data)
+              reader = PdfReader(path)
+              record = {'document_id': doc_id, 'url': url, 'sha256': hashlib.sha256(data).hexdigest(), 'pages': len(reader.pages)}
+              metadata.append(record)
+              print(json.dumps(record))
+              for index, page in enumerate(reader.pages, 1):
+                  pages.append({'document_id': doc_id, 'page_number': index, 'text': page.extract_text() or ''})
+          (root / 'sources.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
+          (root / 'pages.jsonl').write_text('\n'.join(json.dumps(p, ensure_ascii=False) for p in pages) + '\n', encoding='utf-8')
+          PY
+      - name: Download portable interface packages
+        run: python -m pip download --no-deps -d verification/wheels streamlit==1.50.0 altair==5.5.0 pydeck==0.9.1 gitpython==3.1.45 gitdb==4.0.12 smmap==5.0.2 blinker==1.9.0 cachetools==5.5.2 toml==0.10.2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint02-verification-inputs
+          path: verification/
+          retention-days: 1
