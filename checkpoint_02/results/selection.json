@@ -1,0 +1,25 @@
+{
+  "selected": {
+    "strategy": "token",
+    "size": 256,
+    "overlap": 32,
+    "mode": "stem",
+    "k1": 1.8,
+    "b": 0.35
+  },
+  "baseline": {
+    "strategy": "token",
+    "size": 256,
+    "overlap": 32,
+    "mode": "lower",
+    "k1": 1.2,
+    "b": 0.75
+  },
+  "selection_rule": "Development Hit@5, then MRR@5, then fewer context tokens, then config key",
+  "corpus_sha256": "959e662894c79d16cb8be7b61000071045de0144381e682611f38b0ec1f67369",
+  "questions_sha256": "ad1bca8caaa07b2a3041dcc43cc217593f26f277427e68e48429228fdd792098",
+  "configurations": 96,
+  "development_questions": 32,
+  "test_questions": 28,
+  "test_status": "held-out source pages within the same three documents; not independent human questions"
+}

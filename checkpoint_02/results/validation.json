@@ -1,0 +1,12 @@
+{
+  "python": "3.13.18",
+  "tests": 39,
+  "failures": 0,
+  "errors": 0,
+  "notebook": "executed top-to-bottom in fresh GitHub Actions Python 3.13",
+  "streamlit": "AppTest interactions passed",
+  "colab_service": "not tested in Google Colab itself",
+  "question_api": "mocked tests only; no paid API call",
+  "human_review": false,
+  "run_url": "https://github.com/eugenetatarchenkolaw/research_assistant/actions/runs/42899882168"
+}

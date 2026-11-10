@@ -1,0 +1,44 @@
+[
+  {
+    "document_id": "gost_9000_2015",
+    "url": "https://files.stroyinf.ru/Data2/1/4293759/4293759339.pdf",
+    "sha256": "e326e311997ac52768ffcfbaa001ba7c473afddd252c25354820be399e9ee438",
+    "pages": 53,
+    "title": "ГОСТ Р ИСО 9000-2015",
+    "search_pages": [
+      4,
+      51
+    ],
+    "publication_copy": "2018",
+    "obtained_on": "2026-11-10",
+    "redistribution": "PDFs and full extracted texts are not redistributed. Local research copies only."
+  },
+  {
+    "document_id": "gost_9001_2015",
+    "url": "https://files.stroyinf.ru/Data2/1/4293759/4293759338.pdf",
+    "sha256": "51ab907a12e56ddab5bbd6c26ab7c32f89688ed3a741cedbb4b6240cf468cd9b",
+    "pages": 32,
+    "title": "ГОСТ Р ИСО 9001-2015",
+    "search_pages": [
+      5,
+      31
+    ],
+    "publication_copy": "2020",
+    "obtained_on": "2026-11-10",
+    "redistribution": "PDFs and full extracted texts are not redistributed. Local research copies only."
+  },
+  {
+    "document_id": "gost_10013_2024",
+    "url": "https://files.stroyinf.ru/Data/830/83016.pdf",
+    "sha256": "cfac4f3fc0b72720a1571229b51e4aafde3be3b865d9efc5c3c38afeafd9e012",
+    "pages": 20,
+    "title": "ГОСТ Р ИСО 10013-2024",
+    "search_pages": [
+      4,
+      18
+    ],
+    "publication_copy": "2024",
+    "obtained_on": "2026-11-10",
+    "redistribution": "PDFs and full extracted texts are not redistributed. Local research copies only."
+  }
+]

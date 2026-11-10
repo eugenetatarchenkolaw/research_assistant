@@ -1,0 +1,11 @@
+{
+  "method": "Questions authored by the ChatGPT assistant from supplied source sections during this task; not a claimed API call.",
+  "scope": "20 questions per document; 60 originals and 60 paired paraphrases",
+  "model": "ChatGPT session; API model/version identifier not available",
+  "date": "2026-11-10",
+  "temperature": null,
+  "seed": null,
+  "prompt": "Read the selected sections of each quality management standard. Write 20 answerable Russian questions and one meaning-preserving paraphrase per question. Ground each question in a source section. Do not put section numbers into the query. Do not invent human approval.",
+  "status": "synthetic_pilot_not_human_gold",
+  "split_seed": 42
+}
